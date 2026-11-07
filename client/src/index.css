@@ -98,3 +98,20 @@ input, select, textarea {
 input:focus, select:focus, textarea:focus {
   outline: 2px solid var(--color-accent);
 }
+/* Responsive basics */
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 1rem 0.8rem;
+  }
+  h1 {
+    font-size: 1.7rem;
+  }
+  h2 {
+    font-size: 1.3rem;
+  }
+}
