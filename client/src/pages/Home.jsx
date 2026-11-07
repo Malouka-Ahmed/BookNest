@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
+import VideoSection from '../components/VideoSection';
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
 
       <div className="container">
         <h2>Featured books</h2>
+        <VideoSection videoId="o8BByD_8wuY"/>
         {/* Person 3: add the featured books from the API here */}
       </div>
     </>
