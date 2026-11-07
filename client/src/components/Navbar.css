@@ -1,0 +1,37 @@
+.navbar {
+  background: var(--color-primary-dark);
+  color: #fff;
+}
+.navbar-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0.8rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.navbar-logo {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  color: #fff;
+  text-decoration: none;
+}
+.navbar-links {
+  display: flex;
+  gap: 1.2rem;
+}
+.navbar-links a {
+  color: #e8dccb;
+  text-decoration: none;
+}
+.navbar-links a:hover,
+.navbar-links a.active {
+  color: #fff;
+  border-bottom: 2px solid var(--color-accent);
+}
+.navbar-auth {
+  display: flex;
+  gap: 0.5rem;
+}
