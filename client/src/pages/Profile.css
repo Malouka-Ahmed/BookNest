@@ -1,0 +1,46 @@
+.profile-card {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.profile-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: var(--color-primary-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+}
+.profile-info h1 {
+  margin: 0 0 0.3rem;
+}
+.profile-form {
+  flex: 1;
+  min-width: 250px;
+}
+.muted {
+  color: var(--color-text-muted);
+}
+.profile-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.stat {
+  text-align: center;
+}
+.stat h2 {
+  margin: 0;
+  font-size: 2.2rem;
+  color: var(--color-accent);
+}
+.stat p {
+  margin: 0;
+  color: var(--color-text-muted);
+}
