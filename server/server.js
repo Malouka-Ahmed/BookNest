@@ -8,6 +8,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use('/api/users', require('./routes/userRoutes'));
+app.use('/api/books', require('./routes/bookRoutes'));
 
 app.get('/api/health', (req, res) => {
   res.json({ status: 'BookNest server is running' });
