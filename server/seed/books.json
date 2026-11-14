@@ -460,5 +460,82 @@
     "rating": 4.5,
     "featured": false,
     "description": "The former First Lady describes her childhood in Chicago, her career, and her years in the White House."
+  },
+  {
+    "title": "Fahrenheit 451",
+    "author": "Ray Bradbury",
+    "genre": "Dystopian",
+    "isbn": "9781451673319",
+    "publishedYear": 1953,
+    "pages": 249,
+    "rating": 4,
+    "featured": false,
+    "description": "In a world where books are banned and burned, fireman Guy Montag begins to question his job."
+  },
+  {
+    "title": "Shatter Me",
+    "author": "Tahereh Mafi",
+    "genre": "Dystopian",
+    "isbn": "9780062085498",
+    "publishedYear": 2011,
+    "pages": 338,
+    "rating": 4,
+    "featured": false,
+    "description": "Juliette's touch can kill, and a ruthless regime wants to use her as a weapon. When someone from her past reappears, she has to decide who she can trust."
+  },
+  {
+    "title": "The Cruel Prince",
+    "author": "Holly Black",
+    "genre": "Fantasy",
+    "isbn": "9780316310277",
+    "publishedYear": 2018,
+    "pages": 384,
+    "rating": 4.1,
+    "featured": false,
+    "description": "Jude is a mortal girl raised in the High Court of Faerie, where she is despised. To win a place there she must play a dangerous game of politics and betrayal."
+  },
+  {
+    "title": "Fourth Wing",
+    "author": "Rebecca Yarros",
+    "genre": "Fantasy",
+    "isbn": "9781649374042",
+    "publishedYear": 2023,
+    "pages": 498,
+    "rating": 4.6,
+    "featured": false,
+    "description": "Violet Sorrengail was meant to be a scribe, but is forced into a war college where cadets train to bond with dragons. Those who fail don't survive."
+  },
+  {
+    "title": "Once Upon a Broken Heart",
+    "author": "Stephanie Garber",
+    "genre": "Fantasy",
+    "isbn": "9781250268426",
+    "publishedYear": 2021,
+    "pages": 416,
+    "rating": 3.9,
+    "featured": false,
+    "description": "Evangeline Fox is desperate to stop the boy she loves from marrying someone else, so she makes a bargain with the dangerous Prince of Hearts."
+  },
+  {
+    "title": "Better Than the Movies",
+    "author": "Lynn Painter",
+    "genre": "Romance",
+    "isbn": "9781534467620",
+    "publishedYear": 2021,
+    "pages": 320,
+    "rating": 4.1,
+    "featured": false,
+    "description": "Liz is a hopeless romantic who wants a movie-perfect love story. She teams up with her annoying neighbor Wes to win over her crush."
+  },
+  {
+    "title": "A Court of Thorns and Roses",
+    "author": "Sarah J. Maas",
+    "genre": "Fantasy",
+    "isbn": "9781619634442",
+    "publishedYear": 2015,
+    "pages": 419,
+    "rating": 4.2,
+    "featured": false,
+    "description": "Feyre is a hunter who kills a wolf in the woods and is dragged to a faerie land as payment, where her captor is not what he seems."
   }
 ]
