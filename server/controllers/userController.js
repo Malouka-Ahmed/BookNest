@@ -30,8 +30,14 @@ exports.updateMe = async (req, res) => {
   try {
     const { name, bio } = req.body;
 
-    if (name !== undefined && name.trim() === '') {
-      return res.status(400).json({ message: 'Name cannot be empty' });
+    if (name !== undefined && (typeof name !== 'string' || name.trim().length < 2 || name.trim().length > 80)) {
+      return res.status(400).json({ message: 'Name must be between 2 and 80 characters' });
+    }
+    if (bio !== undefined && (typeof bio !== 'string' || bio.length > 500)) {
+      return res.status(400).json({ message: 'Bio must be 500 characters or fewer' });
+    }
+    if (name === undefined && bio === undefined) {
+      return res.status(400).json({ message: 'At least one profile field is required' });
     }
 
     const updates = {};
@@ -44,8 +50,9 @@ exports.updateMe = async (req, res) => {
 
     if (!user) return res.status(404).json({ message: 'User not found' });
 
-    res.json({ name: user.name, email: user.email, bio: user.bio });
-  } catch (err) {
-    res.status(500).json({ message: 'Server error', error: err.message });
+    return res.json({ name: user.name, email: user.email, bio: user.bio });
+  } catch (error) {
+    console.error('Updating profile failed:', error);
+    return res.status(500).json({ message: 'Server error' });
   }
 };

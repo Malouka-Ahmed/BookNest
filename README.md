@@ -14,13 +14,18 @@ Built with React, Node.js/Express, and MongoDB.
 ### Server
 1. `cd server`
 2. `npm install`
-3. Copy `.env.example` to `.env` and fill in the values
-4. `node server.js`
+3. Copy `.env.example` to `.env` and set `MONGO_URI`
+4. Set `JWT_SECRET` to a random value of at least 32 characters. Generate one with `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`
+5. `node server.js`
 
 ### Client
 1. `cd client`
 2. `npm install`
 3. `npm run dev`
+
+The client uses the Vite proxy to reach the server on port `3001` by default.
+Authentication endpoints are `POST /api/auth/register`, `POST /api/auth/login`,
+and `GET /api/auth/me` (the last requires an Authorization header with a valid token).
 
 ## Features by team member
 
