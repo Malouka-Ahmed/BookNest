@@ -1,68 +1,76 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { apiFetch } from '../api';
-import BookCover from '../components/BookCover';
-import AddToListDropdown from '../components/AddToListDropdown';
-import './BookDetails.css';
+import { useParams, Link } from 'react-router-dom';
+import Hero from '../components/Hero';
 
-// Person 2 owns the book info layout on this page;
-// Person 3 owns the "Add to list" dropdown (<AddToListDropdown />).
+const API = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const PLACEHOLDER = '/placeholder-cover.png';
+
 export default function BookDetails() {
   const { id } = useParams();
-  // Remember which id the result belongs to, so navigating to another book shows "Loading" again
-  const [result, setResult] = useState({ id: null, book: null, error: '' });
+  const [book, setBook] = useState(null);
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    let cancelled = false;
-    apiFetch(`/api/books/${id}`)
-      .then((data) => !cancelled && setResult({ id, book: data, error: '' }))
-      .catch((err) => !cancelled && setResult({ id, book: null, error: err.message }));
+    let ignore = false; // skip updates if the user navigates away mid-request
+    fetch(`${API}/books/${id}`)
+      .then((r) => {
+        if (!r.ok) throw new Error('Book not found');
+        return r.json();
+      })
+      .then((data) => {
+        if (ignore) return;
+        setBook(data);
+        setError('');
+      })
+      .catch((e) => {
+        if (!ignore) setError(e.message);
+      });
     return () => {
-      cancelled = true;
+      ignore = true;
     };
   }, [id]);
 
-  const book = result.id === id ? result.book : null;
-  const error = result.id === id ? result.error : '';
-
-  if (error) {
-    return (
-      <div className="container">
-        <p className="muted">{error}</p>
-        <Link to="/browse" className="btn">Back to Browse</Link>
-      </div>
-    );
-  }
-
-  if (!book) {
-    return <div className="container"><p className="muted">Loading book…</p></div>;
-  }
-
   return (
-    <div className="container">
-      <Link to="/browse" className="book-details-back">← Back to Browse</Link>
+    <>
+      {/* If your leader's stub had extra Hero props (subtitle, image), keep them here */}
+      <Hero small title={book?.title || 'Book details'} />
 
-      <div className="book-details">
-        <div className="book-details-cover">
-          <BookCover book={book} size="lg" />
-        </div>
+      <div className="container">
+        <Link to="/browse">← Back to Browse</Link>
 
-        <div className="book-details-info">
-          <span className="book-details-genre">{book.genre}</span>
-          <h1>{book.title}</h1>
-          <p className="book-details-author">by {book.author}</p>
+        {error && <p>{error}</p>}
+        {!book && !error && <p>Loading...</p>}
 
-          <ul className="book-details-facts">
-            {book.rating > 0 && <li><strong>★ {book.rating.toFixed(1)}</strong> rating</li>}
-            {book.publishedYear && <li>Published <strong>{book.publishedYear}</strong></li>}
-            {book.pages && <li><strong>{book.pages}</strong> pages</li>}
-          </ul>
+        {book && (
+          <div className="card" style={{ display: 'flex', gap: 24, flexWrap: 'wrap', marginTop: 16 }}>
+            <img
+              src={book.coverImage || PLACEHOLDER}
+              alt={book.title}
+              onError={(e) => {
+                e.currentTarget.onerror = null;
+                e.currentTarget.src = PLACEHOLDER;
+              }}
+              style={{ width: 240, borderRadius: 8 }}
+            />
+            <div style={{ flex: 1, minWidth: 240 }}>
+              <h2>{book.title}</h2>
+              <p><strong>Author:</strong> {book.author}</p>
+              <p><strong>Genre:</strong> {book.genre}</p>
+              <p>
+                <strong>Rating:</strong>{' '}
+                {book.averageRating > 0
+                  ? `⭐ ${book.averageRating.toFixed(1)} (${book.ratingsCount} ratings)`
+                  : 'No ratings yet'}
+              </p>
+              {book.pages && <p><strong>Pages:</strong> {book.pages}</p>}
+              {book.publishedYear && <p><strong>Published:</strong> {book.publishedYear}</p>}
+              <p>{book.description}</p>
 
-          <AddToListDropdown bookId={book._id} />
-
-          {book.description && <p className="book-details-description">{book.description}</p>}
-        </div>
+              {/* Teammates plug in here: add-to-list buttons, wishlist, reviews */}
+            </div>
+          </div>
+        )}
       </div>
-    </div>
+    </>
   );
 }

@@ -13,13 +13,13 @@ const bookSchema = new mongoose.Schema(
     isbn: { type: String, unique: true, sparse: true },
     publishedYear: { type: Number },
     pages: { type: Number },
-    rating: { type: Number, min: 0, max: 5, default: 0 }, // average rating
+    averageRating: { type: Number, min: 0, max: 5, default: 0 }, // average rating
+    ratingsCount:  { type: Number, default: 0 },
     featured: { type: Boolean, default: false }, // shown on the Home page
   },
   { timestamps: true }
 );
 
-// Lets Person 2 search by title/author with $text
 bookSchema.index({ title: 'text', author: 'text' });
 
 module.exports = mongoose.model('Book', bookSchema);
