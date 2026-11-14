@@ -1,0 +1,44 @@
+.add-to-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  max-width: 280px;
+}
+.add-to-list-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+}
+.add-to-list-select {
+  cursor: pointer;
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+  font-weight: 600;
+}
+.add-to-list-select.is-added {
+  background: var(--color-success);
+  border-color: var(--color-success);
+}
+.add-to-list-select option {
+  background: #fff;
+  color: var(--color-text);
+}
+.add-to-list-select:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+.add-to-list-status {
+  min-height: 1.4em;
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-success);
+}
+.add-to-list-error {
+  color: var(--color-danger);
+}
+.add-to-list-login {
+  margin: 0;
+}
