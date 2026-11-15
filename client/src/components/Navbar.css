@@ -33,7 +33,18 @@
 }
 .navbar-auth {
   display: flex;
+  align-items: center;
   gap: 0.5rem;
+}
+.navbar-greeting {
+  color: #e8dccb;
+}
+.navbar-retry {
+  border: 0;
+  background: none;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: underline;
 }
 @media (max-width: 700px) {
   .navbar-inner {

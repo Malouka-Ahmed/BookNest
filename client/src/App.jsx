@@ -8,6 +8,7 @@ import Browse from './pages/Browse';
 import BookDetails from './pages/BookDetails';
 import MyLibrary from './pages/MyLibrary';
 import Profile from './pages/Profile';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
@@ -21,8 +22,8 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/browse" element={<Browse />} />
           <Route path="/books/:id" element={<BookDetails />} />
-          <Route path="/library" element={<MyLibrary />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/library" element={<ProtectedRoute><MyLibrary /></ProtectedRoute>} />
+          <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
         </Routes>
       </main>
 
